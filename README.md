@@ -2,7 +2,7 @@
 ## About
 wpx2 is a WordPress theme devlopment environment generator. It makes use of Webpack which comes preconfigured with the basics of a modern, productive work environment.
 
-wpx2 is for __LOCAL DEVELOPMENT USE ONLY__! Accidents happen and irreversible damage can be done with this tool. So please do attempt to use it on your production WordPress install. 
+wpx2 is for __LOCAL DEVELOPMENT USE ONLY__! Accidents happen and irreversible damage can be done with this tool. So please do not attempt to use it on your production WordPress install. 
 
 ## Features
 ### CSS Preprocessing
