@@ -1,6 +1,6 @@
 {
   "name": "wpx2",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "A WordPress theme starter generator CLI tool. Creates a foundation for developing WordPress themes using Webpack.",
   "repository": {
     "type": "git",
