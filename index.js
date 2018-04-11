@@ -39,7 +39,7 @@ let createDirectory = async () => {
         generateFolders();
       }
       else {
-        console.log(chalk.red(`Generation Aborted. Folder "${outputPath}" already exists in directory.`))
+        console.log(chalk.red(`Generation Aborted. Folder "${outputPath}" already exists.`))
         process.exit();
       }
     })
@@ -50,7 +50,25 @@ let installDeps = folderDir => {
   exec(`cd ${folderDir} && npm install`,{stdio:[0,1,2]});
 }
 
+let promptForProxyUrl = async () => {
+  return await inquirer.prompt([{
+    type: 'input',
+    name: 'proxyUrl',
+    default: 'http://localhost:8080',
+    message: chalk.yellow('Enter URL of WordPress instance for proxy -')
+  }]).then(({ proxyUrl }) => {
+    if (!proxyUrl) {
+      console.log(chalk.red(`Generation Aborted. A proxy URL is required.`))
+      process.exit();
+    }
+    return proxyUrl;
+  });
+}
+
 let generate = async name => {
+  
+  const proxyUrl = await promptForProxyUrl();
+
   const templateFiles = [
     new TemplateFile('index.php', 'index.php', '.'),
     new TemplateFile('style.css', 'style.css', '.', [name]), //TODO: allow names with spaces and format to valid text domain
@@ -58,7 +76,7 @@ let generate = async name => {
     new TemplateFile('header.php', 'header.php', '.'),
     new TemplateFile('footer.php', 'footer.php', '.'),
     new TemplateFile('package.json', 'package.json', '.', [name.toLowerCase()]), //TODO: allow names with spaces and format to valid package name
-    new TemplateFile('webpack.config.js', 'webpack.config.js', '.', [name]),
+    new TemplateFile('webpack.config.js', 'webpack.config.js', '.', [name, proxyUrl]),
     new TemplateFile('index.js', 'index.js', 'src/js'),
     new TemplateFile('index.scss', 'index.scss', 'src/styles'),
     new TemplateFile('gitignore.txt', '.gitignore', '.')
