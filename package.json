@@ -2,6 +2,13 @@
   "name": "wpx2",
   "version": "1.0.5",
   "description": "A WordPress theme starter generator CLI tool. Creates a foundation for developing WordPress themes using Webpack.",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:mavance/wpx2.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mavance/wpx2/issues"
+  },
   "preferGlobal": true,
   "bin": "./index.js",
   "scripts": {
@@ -14,7 +21,7 @@
     "generator"
   ],
   "author": "Matthew Vance <mavance44@gmail.com>",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "chalk": "^2.3.2",
     "commander": "^2.15.1",
