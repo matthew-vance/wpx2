@@ -110,7 +110,7 @@ let main = async name => {
 }
 
 program
-  .version('1.0.5')
+  .version('1.0.6')
   .command('new <name>')
   .description('Generate a new theme')
   .action(main);
